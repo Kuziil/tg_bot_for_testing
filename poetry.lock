@@ -227,6 +227,22 @@ pycodestyle = ">=2.11.0,<2.12.0"
 pyflakes = ">=3.2.0,<3.3.0"
 
 [[package]]
+name = "flake8-mypy"
+version = "17.8.0"
+description = "A plugin for flake8 integrating mypy."
+optional = false
+python-versions = "*"
+files = [
+    {file = "flake8-mypy-17.8.0.tar.gz", hash = "sha256:47120db63aff631ee1f84bac6fe8e64731dc66da3efc1c51f85e15ade4a3ba18"},
+    {file = "flake8_mypy-17.8.0-py35.py36-none-any.whl", hash = "sha256:cff009f4250e8391bf48990093cff85802778c345c8449d6498b62efefeebcbc"},
+]
+
+[package.dependencies]
+attrs = "*"
+flake8 = ">=3.0.0"
+mypy = "*"
+
+[[package]]
 name = "frozenlist"
 version = "1.4.1"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -823,4 +839,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "4270eb04ff9cde8dc4318e6d1ed345c54dea43252dae617f0d59b3065fb4b626"
+content-hash = "9dc48f56e86dc414ba63ddd77135baea81161aa0c9b8629ca76ee390a53721f7"
