@@ -5,6 +5,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from config_data.config import Config, load_config
+from handlers.other_handlers import other_handlers
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,8 @@ async def main():
     dp = Dispatcher(storage=storage)
 
     config: Config = load_config()
+
+    dp.include_router(other_handlers)
 
     bot = Bot(token=config.tg_bot.token,
               parse_mode='HTML')
