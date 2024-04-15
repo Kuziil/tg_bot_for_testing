@@ -6,7 +6,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from fluentogram import TranslatorHub
 
 from config_data.config import Config, load_config
-from handlers.other_handlers import other_handlers
+from handlers import other_handlers, main_handlers
 from middlewares.i18n import TranslatorRunnerMiddleware
 from utils.i18n import create_translator_hub
 
@@ -29,7 +29,8 @@ async def main():
 
     config: Config = load_config()
 
-    dp.include_router(other_handlers)
+    dp.include_router(main_handlers.router)
+    dp.include_router(other_handlers.router)
 
     bot = Bot(token=config.tg_bot.token,
               parse_mode='HTML')
