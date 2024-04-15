@@ -40,5 +40,8 @@ text-consent-list =
         1. Видео кружок с вашим лицом и паспортом.
 
 text-fill = Пожалуйста введите информацию о вас.
+
 text-fill-name = Введите свое имя.
 text-fill-name-is_true = Ваше имя <b>{$name}</b>, все верно?
+
+text-fill-age = Введите свой возраст.

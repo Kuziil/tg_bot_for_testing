@@ -83,4 +83,12 @@ async def process_name_sent(
     )
 
 
-
+@router.callback_query(F.data == "button-name-confirm-y")
+async def process_press_name_confirm_y(
+        callback: CallbackQuery,
+        state: FSMContext,
+        i18n: TranslatorRunner,
+):
+    await state.set_state(FSMFillForm.fill_age)
+    await callback.message.answer(text=i18n.text.fill.age())
+    await callback.answer()
