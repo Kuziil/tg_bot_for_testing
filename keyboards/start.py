@@ -31,3 +31,20 @@ def create_consent_kb(
         ),
     )
     return kb_builder.as_markup()
+
+def create_true_or_not_kb(
+        i18n: TranslatorRunner,
+        fill: str
+):
+    kb_builder = InlineKeyboardBuilder()
+    kb_builder.row(
+        InlineKeyboardButton(
+            text=i18n.button.confirm.n(),
+            callback_data=f"button-{fill}-confirm-n"
+        ),
+        InlineKeyboardButton(
+            text=i18n.button.confirm.y(),
+            callback_data=f"button-{fill}-confirm-y"
+        ),
+    )
+    return kb_builder.as_markup()

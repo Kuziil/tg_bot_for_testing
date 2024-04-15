@@ -5,7 +5,11 @@ from aiogram.fsm.state import default_state
 from aiogram.fsm.context import FSMContext
 from fluentogram import TranslatorRunner
 
-from keyboards.start import create_start_kb, create_consent_kb
+from keyboards.start import (
+    create_start_kb,
+    create_consent_kb,
+    create_true_or_not_kb
+)
 from FSMs.FSM import FSMFillForm
 
 
@@ -43,7 +47,7 @@ async def process_press_start_button(
 
 
 @router.callback_query(F.data == "button-consent-n")
-async def process_press_start_button_1(
+async def process_press_consent_n(
         callback: CallbackQuery,
         i18n: TranslatorRunner,
 ):
@@ -61,3 +65,22 @@ async def process_press_consent_y(
     await callback.message.answer(text=i18n.text.fill.name())
     await callback.answer()
     await state.set_state(FSMFillForm.fill_name)
+
+
+@router.message(
+    StateFilter(FSMFillForm.fill_name),
+    F.text.isalpha(),
+)
+async def process_name_sent(
+        message: Message,
+        state: FSMContext,
+        i18n: TranslatorRunner,
+):
+    await state.update_data(fill_name=message.text)
+    await message.answer(
+        text=i18n.text.fill.name.is_true(name=message.text),
+        reply_markup=create_true_or_not_kb(i18n=i18n, fill="name")
+    )
+
+
+
