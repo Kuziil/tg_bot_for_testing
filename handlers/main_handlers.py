@@ -92,3 +92,19 @@ async def process_press_name_confirm_y(
     await state.set_state(FSMFillForm.fill_age)
     await callback.message.answer(text=i18n.text.fill.age())
     await callback.answer()
+
+
+@router.message(
+    StateFilter(FSMFillForm.fill_age),
+    F.text.isdigit(),
+)
+async def process_age_sent(
+        message: Message,
+        state: FSMContext,
+        i18n: TranslatorRunner,
+):
+    await state.update_data(fill_age=message.text)
+    await message.answer(
+        text=i18n.text.fill.age.is_true(age=message.text),
+        reply_markup=create_true_or_not_kb(i18n=i18n, fill="age")
+    )

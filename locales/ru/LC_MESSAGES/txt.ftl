@@ -45,3 +45,4 @@ text-fill-name = Введите свое имя.
 text-fill-name-is_true = Ваше имя <b>{$name}</b>, все верно?
 
 text-fill-age = Введите свой возраст.
+text-fill-age-is_true = Вам <b>{$age}</b> , все верно?
