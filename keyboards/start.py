@@ -16,18 +16,18 @@ def create_start_kb(
     return kb_builder.as_markup()
 
 
-def create_conditions_kb(
+def create_consent_kb(
         i18n: TranslatorRunner
 ):
     kb_builder = InlineKeyboardBuilder()
     kb_builder.row(
         InlineKeyboardButton(
-            text=i18n.button.conditions.y(),
-            callback_data="button-conditions-y"
+            text=i18n.button.consent.y(),
+            callback_data="button-consent-y"
         ),
         InlineKeyboardButton(
-            text=i18n.button.conditions.n(),
-            callback_data="button-conditions-n"
+            text=i18n.button.consent.n(),
+            callback_data="button-consent-n"
         ),
     )
     return kb_builder.as_markup()
